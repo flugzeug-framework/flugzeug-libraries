@@ -29,7 +29,7 @@ export function validatorGenerator(model: any) {
 function formatAttribute(type, attribute, attributes) {
   switch (type) {
     case "enum":
-      return `Joi.string().valid(${attributes[attribute].type.values})`;
+      return `Joi.string().valid(${attributes[attribute].type.values.map((value)=>`"${value}"`)})`;
       break;
     case "date":
       return "Joi.date().iso().options({ convert: true })";
