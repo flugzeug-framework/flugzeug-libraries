@@ -1,16 +1,16 @@
 import { getValidator } from "./decorators";
 import path from "path";
 import fs from "fs";
-
 import { validatorGenerator } from "./validatorGenerators";
+import {Sequelize} from "sequelize";
 
-export function createValidator(){
+export function createValidator(db: Sequelize){
   const VALIDATORS_DIR = path.join(__dirname, "../../../../app/validators");
 
-  const importedCtrls1 = require("require-dir-all")("../../../../dist/controllers/v1");
-  const controllers = Object.keys(importedCtrls1).map(k => {
-    return importedCtrls1[k].default;
-  });
+  const sequelize = {
+    models: db.models,
+  };
+  const models = sequelize.models;
 
   const validatorTemplate = (modelName, data) =>
     `
@@ -20,14 +20,13 @@ ${data}
 });`;
 
 //iterates over all registered controllers in api docs
-  for (const controller of controllers) {
-    const model = controller?.model;
-    const modelName = model?.name ?? controller.name;
-    const validatorModel: boolean = getValidator(model);
+  for (const model in models) {
+    const modelName = models[model].prototype.constructor.name;
+    const validatorModel: boolean = getValidator(models[model]);
     //generate Base schemas of model in controller
     if (validatorModel) {
       console.log("Genarating validator for : " + modelName + ".....");
-      const validatorProperties = validatorGenerator(model);
+      const validatorProperties = validatorGenerator(models[model]);
       //add model requestSchema
       try {
         fs.writeFileSync(
