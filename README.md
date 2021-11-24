@@ -1,6 +1,6 @@
 # flugzeug
 
-flugzeug is a generator-flugzeug library for dealing with API documentation, validators generator, etc.
+flugzeug is a generator-flugzeug library for dealing with API documentation, validators and  Http Methods decorators.
 
 ## Usage
 Please see the [generator-flugzeug](https://www.npmjs.com/package/generator-flugzeug) framework .
