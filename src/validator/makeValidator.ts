@@ -4,7 +4,7 @@ import fs from "fs";
 import { validatorGenerator } from "./validatorGenerators";
 import {Sequelize} from "sequelize";
 
-export function createValidator(db: Sequelize){
+export function makeValidators(db: Sequelize){
   const VALIDATORS_DIR = path.join(__dirname, "../../../../app/validators");
 
   const sequelize = {

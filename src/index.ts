@@ -4,19 +4,34 @@ import {
   RequestRequired,
   UpdateRequired,
   ApiDocsSchemaResponse,
-  ApiDocsSchemaRequest
+  ApiDocsSchemaRequest,
+  ApiDocsRouteSummary,
+  ApiDocsAddSearchParameters,
+  getHttpCode,
+  getSchemaParameters,
+  getRouteSummary,
+  addSearchParameters
 } from "./documentation/decorators";
 import {
   Controller,
   Put,
   Post,
   Delete,
-  Auth,
+  Authentication,
   Get,
-  Middlewares
+  Middlewares,
+  getControllerMetadata,
+  getControllerAuthMetaData,
+  getControllerAuthorizationMetaData,
+  getControllerMiddlewaresMetaData,
+  isRouteAuth,
+  getAuthorizationMetaData,
+  isRouteAuthorization,
+  getMiddlewares,
+  isRouteMiddlewares
 } from "./routes/decorators";
 import { Validator } from "./validator/decorators";
-import { createValidator } from "./validator/makeValidator";
+import { makeValidators } from "./validator/makeValidator";
 import { generateDocumentation } from "./documentation/makeDocumentation";
 
 export {
@@ -26,14 +41,29 @@ export {
   UpdateRequired,
   ApiDocsSchemaResponse,
   ApiDocsSchemaRequest,
+  ApiDocsRouteSummary,
+  ApiDocsAddSearchParameters,
+  getHttpCode,
+  getSchemaParameters,
+  getRouteSummary,
+  addSearchParameters,
   Controller,
   Get,
   Put,
   Post,
   Delete,
-  Auth,
+  Authentication,
   Middlewares,
+  getControllerMetadata,
+  getControllerAuthMetaData,
+  getControllerAuthorizationMetaData,
+  getControllerMiddlewaresMetaData,
+  isRouteAuth,
+  getAuthorizationMetaData,
+  isRouteAuthorization,
+  getMiddlewares,
+  isRouteMiddlewares,
   Validator,
-  createValidator,
+  makeValidators,
   generateDocumentation
 };

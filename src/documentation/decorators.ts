@@ -5,15 +5,15 @@ enum SchemaRequired {
   updateRequired = "updateRequired",
 }
 //classDecorator
-//active Swager documentation for a Model
+//active documentation
 export function ApiDocs(active: boolean = true) {
-  return target => {
+  return (target) => {
     Reflect.defineMetadata("apiDocs", active, target.prototype);
     return target;
   };
 }
 
-// property decorator
+//Model
 export function RequestRequired(active: boolean = true) {
   return new ModelPropertyDecorator(SchemaRequired.requestRequired, active)
     .decorateProperty;
@@ -32,13 +32,23 @@ export function UpdateRequired(active: boolean = true) {
 export function ApiDocsSchemaResponse(
   schemaName: string,
   customSchema?: object,
+  httpCode?: number,
 ) {
   return (target: any, propertyKey: string) => {
     Reflect.defineMetadata("schemaResponse", schemaName, target, propertyKey);
+
     if (customSchema) {
       Reflect.defineMetadata(
         "customSchemaResponse",
         customSchema,
+        target,
+        propertyKey,
+      );
+    }
+    if (httpCode) {
+      Reflect.defineMetadata(
+        "schemaResponseHttpCode",
+        httpCode,
         target,
         propertyKey,
       );
@@ -59,6 +69,23 @@ export function ApiDocsSchemaRequest(
         propertyKey,
       );
     }
+  };
+}
+
+export function ApiDocsSchemaParams(schema) {
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata("schemaParams", schema, target, propertyKey);
+  };
+}
+
+export function ApiDocsRouteSummary(description: string) {
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata("routeSummary", description, target, propertyKey);
+  };
+}
+export function ApiDocsAddSearchParameters(active: boolean = true) {
+  return (target: any, propertyKey: string) => {
+    Reflect.defineMetadata("searchParameters", active, target, propertyKey);
   };
 }
 
@@ -107,17 +134,7 @@ export function getUpdateRequired(target, propertyKey) {
   );
 }
 
-export function getAuthorization(target) {
-  return (
-    Reflect.getMetadata("authorization", target.prototype) ?? {
-      get: true,
-      post: true,
-      put: true,
-      delete: true,
-    }
-  );
-}
-//RESPONSE SCHEMAS
+//Response Schema
 export function getSchemaResponseName(target: any, propertyKey: string) {
   return Reflect.getMetadata("schemaResponse", target, propertyKey) ?? null;
 }
@@ -127,13 +144,16 @@ export function isCustomSchemaResponse(
 ): boolean {
   return Reflect.hasMetadata("customSchemaResponse", target, propertyKey);
 }
+export function getHttpCode(target: any, propertyKey: string) {
+  return Reflect.getMetadata("schemaResponseHttpCode", target, propertyKey);
+}
 
 export function getCustomSchemaResponse(target: any, propertyKey: string) {
   return (
     Reflect.getMetadata("customSchemaResponse", target, propertyKey) ?? null
   );
 }
-//REQUEST SCHEMAS
+//Request Schema
 export function getSchemaRequestName(target: any, propertyKey: string) {
   return Reflect.getMetadata("schemaRequest", target, propertyKey) ?? null;
 }
@@ -147,4 +167,20 @@ export function getCustomSchemaRequest(target: any, propertyKey: string) {
   return (
     Reflect.getMetadata("customSchemaRequest", target, propertyKey) ?? null
   );
+}
+//Request Params Schema
+export function getSchemaParameters(
+  target: any,
+  propertyKey: string,
+): Array<any> {
+  return Reflect.getMetadata("schemaParams", target, propertyKey) ?? [];
+}
+
+//Summary
+export function getRouteSummary(target: any, propertyKey: string) {
+  return Reflect.getMetadata("routeSummary", target, propertyKey) ?? "";
+}
+//searchParameters
+export function addSearchParameters(target: any, propertyKey: string) {
+  return Reflect.getMetadata("searchParameters", target, propertyKey) ?? false;
 }
