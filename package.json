@@ -1,6 +1,6 @@
 {
   "name": "flugzeug",
-  "version": "1.0.0-demo",
+  "version": "3.0.1-beta",
   "description": "flugzeug library",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -15,7 +15,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [],
+  "keywords": ["generator-flugzeug"],
   "author": "",
   "license": "ISC",
   "devDependencies": {

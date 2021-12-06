@@ -4,9 +4,9 @@ enum AttributeRequired {
 }
 //classDecorator
 //active validator for a Model
-export function Validator(active: boolean = true) {
+export function GenerateValidator(active: boolean = true) {
   return target => {
-    Reflect.defineMetadata("validator", active, target.prototype);
+    Reflect.defineMetadata("generateValidator", active, target.prototype);
     return target;
   };
 }
@@ -15,5 +15,5 @@ export function getValidator(target) {
   if (!target) {
     return false;
   }
-  return Reflect.getMetadata("validator", target.prototype) ?? false;
+  return Reflect.getMetadata("generateValidator", target.prototype) ?? false;
 }

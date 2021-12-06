@@ -28,9 +28,10 @@ import {
   getAuthorizationMetaData,
   isRouteAuthorization,
   getMiddlewares,
-  isRouteMiddlewares
+  isRouteMiddlewares,
+  Authorization
 } from "./routes/decorators";
-import { Validator } from "./validator/decorators";
+import { GenerateValidator } from "./validator/decorators";
 import { makeValidators } from "./validator/makeValidator";
 import { generateDocumentation } from "./documentation/makeDocumentation";
 
@@ -62,8 +63,9 @@ export {
   getAuthorizationMetaData,
   isRouteAuthorization,
   getMiddlewares,
+  Authorization,
   isRouteMiddlewares,
-  Validator,
+  GenerateValidator,
   makeValidators,
   generateDocumentation
 };
