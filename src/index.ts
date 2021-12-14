@@ -29,7 +29,8 @@ import {
   isRouteAuthorization,
   getMiddlewares,
   isRouteMiddlewares,
-  Authorization
+  Authorization,
+  isRoute,
 } from "./routes/decorators";
 import { GenerateValidator } from "./validator/decorators";
 import { makeValidators } from "./validator/makeValidator";
@@ -64,6 +65,7 @@ export {
   isRouteAuthorization,
   getMiddlewares,
   Authorization,
+  isRoute,
   isRouteMiddlewares,
   GenerateValidator,
   makeValidators,

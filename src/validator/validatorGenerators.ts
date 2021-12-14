@@ -45,8 +45,10 @@ function formatAttribute(type, attribute, attributes) {
       break;
     case "array":
       return "Joi.array()";
+    case "boolean":
+      return "Joi.boolean()";
     default:
-      return "";
+      return "Joi.string().max(255)";
       break;
   }
 }
