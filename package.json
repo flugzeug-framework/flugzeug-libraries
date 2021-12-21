@@ -3,7 +3,7 @@
   "version": "3.0.4-beta",
   "description": "flugzeug library",
   "main": "dist/index.js",
-  "types": "dist/index.d.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
@@ -15,19 +15,28 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": ["generator-flugzeug"],
+  "keywords": [
+    "generator-flugzeug"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^17.0.2",
     "typescript": "^4.0.3"
   },
   "dependencies": {
-    "sequelize": "5.21.3",
+    "deep-diff": "^1.0.2",
+    "express": "^4.17.1",
+    "joi": "^17.5.0",
     "lodash": "^4.17.21",
-    "sequelize-typescript": "1.1.0",
+    "object-hash": "^2.2.0",
+    "prettier": "^1.19.1",
     "reflect-metadata": "0.1.13",
     "require-dir-all": "0.4.15",
-    "prettier": "^1.19.1",
+    "sequelize": "5.21.3",
+    "sequelize-typescript": "1.1.0",
+    "umzug": "^2.3.0",
+    "winston": "^2.4.3",
     "yaml": "1.10.2"
   }
 }
