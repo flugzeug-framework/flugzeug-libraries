@@ -11,22 +11,21 @@ import path from "path";
 import fs from "fs";
 import YAML from "yaml";
 //import { config } from "@/config";
-import {
-  getRouteMetaData,
-  isRoute,
-  getAuthMetaData
-} from "../routes/decorators";
+import { getRouteMetaData, isRoute, getAuthMetaData } from "../";
 
 import {
+  PathGenerator,
   requetSchemaGenerator,
   responseSchemaGenerator,
   updateSchemaGenerator
-} from "./schemaGenerators";
-import pathGenerator from "./pathsGenerator";
+} from "./";
+import { PathGenerator as pathGenerator } from "./";
 
 const DOCUMENTATION_DIR = path.join(__dirname, "../../../../app/documentation");
 
-const importedCtrls1 = require("require-dir-all")("../../../../dist/controllers/v1");
+const importedCtrls1 = require("require-dir-all")(
+  "../../../../dist/controllers/v1"
+);
 const controllers = Object.keys(importedCtrls1).map(k => {
   return importedCtrls1[k].default;
 });

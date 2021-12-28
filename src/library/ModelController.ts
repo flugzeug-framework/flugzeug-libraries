@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { log } from "../migrations/migrate";
+import { log } from "../";
 
 //import { db } from "@/db";
 

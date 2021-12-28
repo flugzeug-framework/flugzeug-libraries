@@ -6,17 +6,12 @@
     "noImplicitAny": false,
     "preserveConstEnums": true,
     "removeComments": true,
-    "sourceMap": true,
     "outDir": "dist",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "allowJs": true,
     "declaration": true,
     "esModuleInterop": true,
     "baseUrl": ".",
-    "typeRoots": [
-      "./node_modules/@types",
-    ]
   },
   "include": [ "./src/**/*"],
 }

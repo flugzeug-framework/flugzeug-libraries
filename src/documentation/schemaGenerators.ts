@@ -2,7 +2,7 @@ import {
   getRequestRequired,
   getResponseRequired,
   getUpdateRequired,
-} from "./decorators";
+} from "./";
 
 export function requetSchemaGenerator(model: any) {
   const attributes = model.rawAttributes;

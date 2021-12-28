@@ -4,7 +4,7 @@ import {
   ApiDocsSchemaParams,
   ApiDocsSchemaRequest,
   ApiDocsSchemaResponse,
-} from "../documentation/decorators";
+} from "../";
 export enum HttpMethod {
   GET = "GET",
   POST = "POST",

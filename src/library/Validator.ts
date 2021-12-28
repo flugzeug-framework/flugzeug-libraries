@@ -1,6 +1,6 @@
 import Joi from "joi";
 import { Request, Response } from "express";
-import { BaseController } from "./BaseController";
+import { BaseController } from "./";
 
 export const idValue = () =>
   Joi.number()

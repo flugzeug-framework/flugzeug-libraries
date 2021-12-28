@@ -1,5 +1,4 @@
 import { Request, Response, Router } from "express";
-import { log } from "../migrations/migrate";
 import _ from "lodash";
 import {
   getRouteMetaData,
@@ -14,7 +13,8 @@ import {
   getControllerAuthorizationMetaData,
   isRouteMiddlewares,
   getControllerMiddlewaresMetaData
-} from "../routes/decorators";
+} from "../";
+import {log} from "../migrations";
 
 export enum ControllerErrors {
   NOT_FOUND,

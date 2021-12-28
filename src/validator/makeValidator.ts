@@ -1,14 +1,14 @@
 import { getValidator } from "./decorators";
 import path from "path";
 import fs from "fs";
-import { validatorGenerator } from "./validatorGenerators";
-import {Sequelize} from "sequelize";
+import { validatorGenerator } from "./";
+import { Sequelize } from "sequelize";
 
-export function makeValidators(db: Sequelize){
+export function makeValidators(db: Sequelize) {
   const VALIDATORS_DIR = path.join(__dirname, "../../../../app/validators");
 
   const sequelize = {
-    models: db.models,
+    models: db.models
   };
   const models = sequelize.models;
 
@@ -19,7 +19,7 @@ export const ${modelName}Schema: Joi.ObjectSchema = Joi.object({
 ${data}
 });`;
 
-//iterates over all registered controllers in api docs
+  //iterates over all registered controllers in api docs
   for (const model in models) {
     const modelName = models[model].prototype.constructor.name;
     const validatorModel: boolean = getValidator(models[model]);
@@ -32,11 +32,11 @@ ${data}
         fs.writeFileSync(
           path.join(VALIDATORS_DIR, `${modelName}.ts`),
           validatorTemplate(modelName, validatorProperties.trim()),
-          { flag: "wx" },
+          { flag: "wx" }
         );
       } catch (err) {
         console.log(
-          `Validator ${modelName} already exist. Please delete it to generate a new one.`,
+          `Validator ${modelName} already exist. Please delete it to generate a new one.`
         );
       }
     }

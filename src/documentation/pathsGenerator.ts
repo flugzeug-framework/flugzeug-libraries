@@ -28,7 +28,7 @@ const Unauthorized = {
 //include=[modelName]
 //where={"tittle":{"$like":"%Note%"}}
 
-export default function PathGenerator(
+export function PathGenerator(
   path: string,
   modelName: string,
   httpMethod: string,

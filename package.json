@@ -1,13 +1,13 @@
 {
   "name": "flugzeug",
-  "version": "3.0.4-beta",
+  "version": "3.0.5-beta",
   "description": "flugzeug library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "prepublish": "tsc"
+    "build": "tsc --module commonjs",
+    "prepublish": "tsc --module commonjs"
   },
   "files": [
     "dist"
@@ -22,7 +22,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^17.0.2",
-    "typescript": "^4.0.3"
+    "typescript": "4.0.3"
   },
   "dependencies": {
     "deep-diff": "^1.0.2",
