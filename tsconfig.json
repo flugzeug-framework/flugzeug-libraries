@@ -6,12 +6,14 @@
     "noImplicitAny": false,
     "preserveConstEnums": true,
     "removeComments": true,
+    "sourceMap": true,
+    "rootDir": "src",
     "outDir": "dist",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "declaration": true,
     "esModuleInterop": true,
     "baseUrl": ".",
   },
   "include": [ "./src/**/*"],
+  "exclude": ["node_modules"]
 }
