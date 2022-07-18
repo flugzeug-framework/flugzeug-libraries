@@ -5,7 +5,6 @@ export * from "./routes/decorators";
 export * from "./validator/decorators";
 //export * from "./documentation/test";
 export * from "./library/Validator";
-export * from "./library/BaseModel"
 export * from "./library/ModelAdminController";
 export * from "./library/BaseController";
 export * from "./library/ModelController";
