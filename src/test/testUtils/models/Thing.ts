@@ -6,7 +6,7 @@ import {
   BelongsTo,
   Model,
 } from "sequelize-typescript";
-import { ApiDocs, RequestRequired, ResponseRequired, UpdateRequired } from "../documentation/decorators";
+import { ApiDocs, RequestRequired, ResponseRequired, UpdateRequired } from "../../../documentation/decorators";
 
 @ApiDocs(true)
 @Table({

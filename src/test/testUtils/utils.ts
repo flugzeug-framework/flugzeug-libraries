@@ -1,7 +1,7 @@
 require("dotenv").config();
 import { Client } from "pg";
-import { config } from "../config";
-import { db, setupDBClearData } from "../db";
+import { config } from "./config";
+import { setupDBClearData } from "./db";
 export function wait(ms) {
   return new Promise((r, _) => setTimeout(r, ms));
 }

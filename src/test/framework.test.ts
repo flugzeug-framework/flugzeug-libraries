@@ -1,7 +1,6 @@
 import chai from "chai";
 import { Request } from "express";
 import { config } from "process";
-// import { config } from "process";
 import { parseAttributes, parseBody, parseInclude, parseLimit, parseOffset, parseOrder, parseWhere, parseId } from "../library/utils";
 
 import {
@@ -12,11 +11,11 @@ import {
 } from "sequelize-test-helpers";
 
 import { Sequelize } from "sequelize-typescript";
-import testDB from "../test/utils";
-import { Thing } from "../models/Thing";
+import testDB from "./testUtils/utils";
+import { Thing } from "../test/testUtils/models/Thing";
 
 /*
-TESTING API
+UNIT TEST
 */
 
 describe("Test framework app unit test", () => {
@@ -159,12 +158,7 @@ describe("Test framework app unit test", () => {
   });
 
   describe("#parseInclude", () => {
-    // const parseAttributesFunc = parseInclude(request, myModel, db);
     const parseIncludeFunc = parseInclude(request, Thing, testDB.getDB);
-    console.log("Include: ", parseIncludeFunc);
-    
-    
-    // func();
     it("should be destructure the property include", () => {
       chai
         .expect(parseIncludeFunc)
@@ -175,5 +169,4 @@ describe("Test framework app unit test", () => {
       chai.expect(parseIncludeFunc).to.be.an("array");
     });
   });
-
 });
