@@ -1,7 +1,7 @@
 import { getValidator } from "./decorators";
 import path from "path";
 import fs from "fs";
-import { validatorGenerator } from "./";
+import { validatorGenerator } from "./validatorGenerators";
 import { Sequelize } from "sequelize";
 
 export function makeValidators(db: Sequelize) {

@@ -1,8 +1,8 @@
 import { ModelController } from "./ModelController";
 import { Model } from "sequelize";
 import { Request, Response } from "express";
-import { BaseController, handleServerError } from "./";
-import { Get, Put, Delete, Authentication, Post, Middlewares } from "../";
+import { BaseController, handleServerError } from "./BaseController";
+import { Get, Put, Delete, Authentication, Post, Middlewares } from "../routes/decorators";
 const adminMiddlewares = [];
 @Authentication()
 export class ModelAdminController<T extends Model> extends ModelController<T> {
