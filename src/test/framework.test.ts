@@ -2,13 +2,29 @@ import chai from "chai";
 import { Request } from "express";
 import { config } from "process";
 // import { config } from "process";
-import { parseAttributes, parseBody, parseId, parseLimit, parseOffset, parseOrder, parseWhere } from "../library/utils";
+import { parseAttributes, parseBody, parseInclude, parseLimit, parseOffset, parseOrder, parseWhere, parseId } from "../library/utils";
+
+import {
+  sequelize,
+  dataTypes,
+  checkModelName,
+  checkPropertyExists
+} from "sequelize-test-helpers";
+
+import { Sequelize } from "sequelize-typescript";
+import testDB from "../test/utils";
+import { Thing } from "../models/Thing";
 
 /*
 TESTING API
 */
 
 describe("Test framework app unit test", () => {
+  before("Setup DB", async function() {
+    this.timeout(50000);
+    await testDB.init();
+  });
+
   const request: Partial<Request> = {
     body: {
       address: "TestNoffftification@c.com",
@@ -58,6 +74,7 @@ describe("Test framework app unit test", () => {
       },
       offset: "3",
       attributes: ["roleId", "status", "positionId", "extraBenefits"],
+      include: [],
     },
   };
 
@@ -136,8 +153,27 @@ describe("Test framework app unit test", () => {
         .to.be.deep.equal(request.query.attributes);
     });
 
-    it("should be a object type", () => {
+    it("should be a array type", () => {
       chai.expect(parseAttributesFunc).to.be.an("array");
     });
   });
+
+  describe("#parseInclude", () => {
+    // const parseAttributesFunc = parseInclude(request, myModel, db);
+    const parseIncludeFunc = parseInclude(request, Thing, testDB.getDB);
+    console.log("Include: ", parseIncludeFunc);
+    
+    
+    // func();
+    it("should be destructure the property include", () => {
+      chai
+        .expect(parseIncludeFunc)
+        .to.be.deep.equal(request.query.include);
+    });
+
+    it("should be a array type", () => {
+      chai.expect(parseIncludeFunc).to.be.an("array");
+    });
+  });
+
 });
