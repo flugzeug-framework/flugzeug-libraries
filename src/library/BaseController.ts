@@ -13,7 +13,7 @@ import {
   getControllerAuthorizationMetaData,
   isRouteMiddlewares,
   getControllerMiddlewaresMetaData
-} from "../";
+} from "../routes/decorators";
 import {log} from "../migrations";
 import { ControllerErrors } from "./utils";
 export class BaseController {
