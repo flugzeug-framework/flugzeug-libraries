@@ -5,7 +5,6 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "tsc && mocha dist/test --recursive",
     "build": "tsc",
     "prepublish": "tsc",
     "detect-circular-dependencies": "tsc && node_modules/madge/bin/cli.js --warning --circular --extensions js ./"
