@@ -10,16 +10,14 @@ import {
 import path from "path";
 import fs from "fs";
 import YAML from "yaml";
-//import { config } from "@/config";
-import { getRouteMetaData, isRoute, getAuthMetaData } from "../";
-
+import { getRouteMetaData, isRoute, getAuthMetaData } from "../routes/decorators";
+import {PathGenerator} from "./pathsGenerator"
 import {
-  PathGenerator,
   requetSchemaGenerator,
   responseSchemaGenerator,
   updateSchemaGenerator
-} from "./";
-import { PathGenerator as pathGenerator } from "./";
+} from "./schemaGenerators";
+import { PathGenerator as pathGenerator } from "./pathsGenerator";
 
 const DOCUMENTATION_DIR = path.join(__dirname, "../../../../app/documentation");
 

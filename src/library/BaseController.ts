@@ -13,27 +13,9 @@ import {
   getControllerAuthorizationMetaData,
   isRouteMiddlewares,
   getControllerMiddlewaresMetaData
-} from "../";
+} from "../routes/decorators";
 import {log} from "../migrations";
-
-export enum ControllerErrors {
-  NOT_FOUND,
-  BAD_REQUEST,
-  UNKNOWN_ERROR
-}
-
-export function parseId(req: Request): number {
-  return parseInt(req.params.id);
-}
-
-export function parseBody(req: Request): any {
-  const body = req.body;
-  if (!_.isObject(body)) {
-    throw ControllerErrors.UNKNOWN_ERROR;
-  }
-  return body;
-}
-
+import { ControllerErrors } from "./utils";
 export class BaseController {
   public name: string; // Name used for the route, all lowercase
   protected router: Router;
